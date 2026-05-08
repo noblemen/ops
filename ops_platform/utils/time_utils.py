@@ -1,0 +1,7 @@
+from __future__ import annotations
+
+from datetime import datetime
+
+
+def iso_now() -> str:
+    return datetime.now().isoformat(timespec="seconds")
