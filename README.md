@@ -297,7 +297,8 @@ python main.py serve --host 127.0.0.1 --port 8080
 ## 9. Testing
 
 ```bash
-python -m unittest discover -s tests -v
+python3 -m pip install -r requirements-dev.txt
+python3 -m pytest -q
 ```
 
 当前测试覆盖重点包括：
@@ -305,6 +306,7 @@ python -m unittest discover -s tests -v
 - 固定种子下 KPI 是否稳定
 - Dashboard 是否暴露扩展模块能力
 - Report 是否包含关键章节
+- API health / simulate / dashboard 路由是否正常
 - Python 文件数量是否满足扩展要求
 
 ---
