@@ -56,8 +56,9 @@ def test_simulation_resets_history_between_runs() -> None:
 
     assert second_result["summary"] == first_result["summary"]
     assert len(platform.alert_history) == first_result["summary"]["total_alerts"]
-    assert len(platform.incident_history) == first_result["summary"]["automated_tasks"]
-    assert len(platform.audit_logs) == first_result["summary"]["automated_tasks"]
+    assert len(platform.incident_history) == first_result["summary"]["total_alerts"]
+    assert len(platform.audit_logs) == first_result["summary"]["total_alerts"]
+    assert sum(1 for incident in platform.incident_history if incident.action) == first_result["summary"]["automated_tasks"]
 
 
 def test_report_and_dashboard_exports_use_requested_paths(tmp_path) -> None:
